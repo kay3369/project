@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+  
+  <mapper namespace="Notice">
+ 	<!-- 공지사항 추가하기 -->
+ 	<insert id="insertNotice" >
+ 		 insert into notice(n_no,n_title,n_detail,n_writer,n_date) 
+		 values(
+		 (select nvl(MAX(n_no)+1,1)from notice),
+		 #{n_title},
+		#{n_detail},
+		 #{n_writer},
+		SYSDATE 
+		 )
+ 	</insert>
+ 	<!-- 공지사항 목록 보기 -->
+ 	<select id="list"  resultType="notice.noticeDTO">
+ 		select * from
+(
+    select rownum rn, A.* 
+    from (
+    select 
+        n_no,n_title,n_detail,n_writer,n_date,n_count
+ 		from notice order by n_no desc
+		
+    ) A 
+)where rn between #{start} and #{end}
+ 	</select>
+ 	<!-- 공지사항 상세보기 -->
+ 	<select id="detailNotice" resultType="notice.noticeDTO">
+ 		select * from notice where n_no = #{n_no}
+ 	</select>
+ 	<!-- 공지사항 조회수 증가 -->
+ 	<update id="plusCount">
+ 	UPDATE notice set n_count=n_count+1 where n_no=#{n_no}
+ 	</update>
+ 	<!-- 공지사항 삭제 -->
+ 	<delete id="deleteNotice">
+ 		delete from notice where n_no = #{n_no}
+ 	</delete>
+ 	<!-- 공지사항 수정하기 -->
+ 	<update id="updateNotice">
+		update notice set n_title = #{n_title},n_detail=#{n_detail} where n_no =#{n_no}
+ 
+ 	</update>
+ 	<!-- 공지사항 페이징 -->
+ 	<select id="recordCount" resultType="int">
+ 	select count(*)as n_count from notice 
+ 	</select>
+ 	  </mapper>
