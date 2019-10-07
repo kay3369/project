@@ -28,7 +28,7 @@
 					return;
 				}else if(passwd != ""){
 					
-					document.frm.action="${path}/board_servlet/pwdCheck.do";
+					document.frm.action="${path}/aticle_servlet/pwdCheck.do";
 					document.frm.submit();
 				}
 			});
@@ -36,14 +36,14 @@
 			$('#btnReply').click(function(){
 				console.log('답변 click 완료');
 				
-				document.frm.action="${path}/board_servlet/reply.do";
+				document.frm.action="${path}/aticle_servlet/reply.do";
 				document.frm.submit();	
 			});
 			
 			$('#btnList').click(function(){
 				console.log('목록 click 완료');
 				
-				location.href="${path}/board_servlet/list.do";
+				location.href="${path}/aticle_servlet/list.do";
 			});
 			
 			// 댓글입력
@@ -56,7 +56,7 @@
 				
 				$.ajax({
 					type : "post",
-					url : "${path}/board_servlet/comment_add.do",
+					url : "${path}/aticle_servlet/comment_add.do",
 					data : param,
 					success : function(){
 						console.log("댓글 추가 확인");
@@ -79,7 +79,7 @@
 				
 				$.ajax({
 					type : "get",
-					url : "${path}/board_servlet/comment_rep.do",
+					url : "${path}/aticle_servlet/comment_rep.do",
 					data : param,
 					success : function(result){
 						console.log('success');

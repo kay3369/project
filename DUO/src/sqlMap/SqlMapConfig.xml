@@ -22,7 +22,8 @@
   <!--sql 관련 설정  -->
   <mappers>
   
-  	<mapper resource="mapper/notice.xml"/>
-  	<mapper resource="member.mapper/member.xml"/>
+  	<mapper resource="mapper/notice.xml"/><!-- 공지사항 -->
+	<mapper resource="mapper/aticleboard.xml"/><!--일반게시판  -->
+	<mapper resource="mapper/board.xml"/><!-- 문의사항게시판 -->
   </mappers>
 </configuration>

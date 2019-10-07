@@ -15,14 +15,14 @@
 			
 			$('#btnWrite').click(function(){
 				console.log('btnWrite 확인');
-				location.href="${path}/board_servlet/write.do";
+				location.href="${path}/aticle_servlet/write.do";
 			});
 		});	
 	</script>
 </head>
 <body>
 <h2>게시물 목록</h2> <hr />
-<form action="${path}/board_servlet/search.do" name="frm" id="frm" method="post">
+<form action="${path}/aticle_servlet/search.do" name="frm" id="frm" method="post">
 	<select name="option" id="option">
 		<option value="writer">이름</option>
 		<option value="subject">제목</option>
@@ -47,7 +47,7 @@
 			<td>${dto.num}</td>
 			<td>
 				<c:forEach var="i" begin="1" end="${dto.re_level}">&nbsp;&nbsp;</c:forEach>
-				<a href="${path}/board_servlet/view.do?num=${dto.num}">${dto.subject} [${dto.comment_count}]</a>
+				<a href="${path}/aticle_servlet/view.do?num=${dto.num}">${dto.subject} [${dto.comment_count}]</a>
 			</td>
 			<td>${dto.writer}</td>
 			<td>${dto.reg_date}</td>
@@ -57,13 +57,13 @@
 		<tr>
 			<td colspan="7">
 				<c:if test="${curBlock>1}">
-					<a href="${path}/board_servlet/list.do?curPage=${prev}">[이전]</a>
+					<a href="${path}/aticle_servlet/list.do?curPage=${prev}">[이전]</a>
 				</c:if>
 				<c:forEach var="i" begin="${startBlock}" end="${endBlock}">
-					&nbsp;<a href="${path}/board_servlet/list.do?curPage=${i}">${i}</a>&nbsp;
+					&nbsp;<a href="${path}/aticle_servlet/list.do?curPage=${i}">${i}</a>&nbsp;
 				</c:forEach>
 				<c:if test="${curBlock<totBlock}">
-					<a href="${path}/board_servlet/list.do?curPage=${next}">[다음]</a>
+					<a href="${path}/aticle_servlet/list.do?curPage=${next}">[다음]</a>
 				</c:if>
 			</td>
 		</tr>

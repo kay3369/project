@@ -49,5 +49,14 @@
  	<!-- 공지사항 페이징 -->
  	<select id="recordCount" resultType="int">
  	select count(*)as n_count from notice 
+	
  	</select>
+ <!-- 관리자페이지 공지사항 목록 -->
+ 	<select id="listAll" resultType="notice.noticeDTO">
+ 		select * from notice
+ 	</select>
+ 	<!-- 관리자페이지 공지사항 삭제 -->
+ 	<delete id="deleteone">
+ 	 DELETE FROM notice WHERE n_no = ${n_no}
+ 	</delete>
  	  </mapper>

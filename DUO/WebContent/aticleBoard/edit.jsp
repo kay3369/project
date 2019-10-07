@@ -16,7 +16,7 @@
 			$('#btnUpdate').click(function(){
 				console.log('수정버튼 완료');
 				if(confirm("수정하시겠습니까?")){
-					document.frm.action="${path}/board_servlet/update.do";
+					document.frm.action="${path}/aticle_servlet/update.do";
 					document.frm.submit();					
 				}
 			});
@@ -24,14 +24,14 @@
 				console.log('삭제버튼 완료');
 				
 				if(confirm("삭제하시겠습니까?")){
-					document.frm.action="${path}/board_servlet/delete.do";
+					document.frm.action="${path}/aticle_servlet/delete.do";
 					document.frm.submit();
 				}
 			});
 			$('#btnList').click(function(){
 				console.log('취소버튼 완료');
 				
-				document.frm.action="${path}/board_servlet/list.do";
+				document.frm.action="${path}/aticle_servlet/list.do";
 				document.frm.submit();
 			});
 			

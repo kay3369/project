@@ -38,20 +38,18 @@
 </script>
 </head>
 <body>
+
 <h1>데이트 해 DUO!</h1><hr />
+<%@include file="../include/menu.jsp" %>
 <form action="" name="loginForm" method="post">
 	아이디 <input type="text" name="id" id="id" size=10 />
 	비밀번호 <input type="password" name="pwd" id="pwd" size=10/>
 	<input type="button" id="btnLogin" value="로그인">
 	<a href="member/addMember.jsp">회원가입</a>
-		<%-- <c:if test="${loginUser.name !=null}">
-				<td>안녕하세요. ${loginUser.name }(${loginUser.userid })님 환영합니다!</td>
-			 
-			</c:if>
-	<c:when  test="${session.login != null }">
-    <p>${session.id}님 환영합니다!</p>
-    <p><a href="logout.do">로그아웃</a>
-    </c:when> --%>
+	<c:if test="${dto.userid !=null }">
+		${dto.userid }님 환영합니다
+	</c:if>
+		<a href="${path }/notice_servlet/allnotice.do">관리자모드</a>
 </form>
 </body>
 </html>

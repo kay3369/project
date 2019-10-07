@@ -76,4 +76,20 @@ public class noticeDAO {
 		session.close();
 		return recordCount;
 	}
+	//공지사항 관리자모드
+	public List<noticeDTO> listAll(){
+		session = MybatisManager.getInstance().openSession();
+		List<noticeDTO> listAll = session.selectList("Notice.listAll");
+		session.close();
+		return listAll;
+		
+	}
+	//공지사항 삭제 관리자모드
+	public void deleteone(Integer n_no)  {
+		session = MybatisManager.getInstance().openSession();
+		session.delete("Notice.deleteone",n_no);
+		session.commit();
+		session.close();
+	}
+	
 }
